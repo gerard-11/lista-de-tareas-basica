@@ -24,8 +24,8 @@ const addTaskEnter=(event)=> {
          addTask()
       }
 }
-const editTask=(id)=> {
-      const newText=window.prompt('Edita tu tarea'  );
+const editTask=(id,text)=> {
+      const newText=window.prompt('Edita tu tarea', text );
       if(!newText) return
       setTasks(tasks.map(task=> task.id === id ? {...task, text:newText} : task))
 }
@@ -57,7 +57,7 @@ const editTask=(id)=> {
                         <span onClick={()=>changeStateTask(t.id)} style={{cursor:'pointer'}}>{t.text}
                         </span>
                         <button className='buttonDelete' onClick={()=> deleteTask(t.id)}>❌</button>
-                    <button className='buttonEdit' onClick={()=>editTask(t.id)}>✍️</button>
+                    <button className='buttonEdit' onClick={()=>editTask(t.id,t.text)}>✍️</button>
                     </li>
                     ))}
             </ul>
