@@ -25,7 +25,7 @@ const addTaskEnter=(event)=> {
       }
 }
 const editTask=(id)=> {
-      const newText=window.prompt('Enter new task title');
+      const newText=window.prompt('Edita tu tarea'  );
       if(!newText) return
       setTasks(tasks.map(task=> task.id === id ? {...task, text:newText} : task))
 }
@@ -49,18 +49,17 @@ const editTask=(id)=> {
   return (
         <div>
             <h1>Lista de Tareas</h1>
-            <input type= 'text' onChange={writeTask} onKeyDown={addTaskEnter} value={task} placeholder="agregar Tareas"/>
-            <button onClick={addTask} >Add Task</button>
+            <input type= 'text' onChange={writeTask} onKeyDown={addTaskEnter} value={task} placeholder="Agregar Tareas"/>
+            <button className='buttonAdd' onClick={addTask} >Add Task</button>
             <ul>
                 {tasks.map((t) => (
                     <li key={t.id} style={{textDecoration: t.completed ? 'line-through' : 'none'}}>
                         <span onClick={()=>changeStateTask(t.id)} style={{cursor:'pointer'}}>{t.text}
                         </span>
-                        <button onClick={()=> deleteTask(t.id)}>❌</button>
-                    <button onClick={()=>editTask(t.id)}>✍️</button>
+                        <button className='buttonDelete' onClick={()=> deleteTask(t.id)}>❌</button>
+                    <button className='buttonEdit' onClick={()=>editTask(t.id)}>✍️</button>
                     </li>
                     ))}
-
             </ul>
 
 
